@@ -13,10 +13,19 @@ class CityScreen extends StatelessWidget {
       ),
       body: BlocBuilder<WeatherCubit, WeatherState>(builder: (context, state) {
         return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Text(state.citySelected ?? "")],
-          ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            Text(state.citySelected ?? ""),
+            Table(
+              children: state.weather?.dataseries
+                      .map((weather) => TableRow(children: [
+                            Column(children: [Text(weather.weather, style: TextStyle(fontSize: 20.0))]),
+                            Column(children: [Text('Tutorial', style: TextStyle(fontSize: 20.0))]),
+                            Column(children: [Text('Review', style: TextStyle(fontSize: 20.0))]),
+                          ]))
+                      .toList() ??
+                  [],
+            )
+          ]),
         );
       }),
     );

@@ -1,10 +1,19 @@
 import 'package:bloc/bloc.dart';
 import 'package:grenoble_hands_on_flutter/state/WeatherState.dart';
 
-class WeatherCubit extends Cubit<WeatherState> {
-  WeatherCubit() : super(new WeatherState(null));
+import '../WeatherRepository.dart';
 
-  void selectCity(String city) {
-    emit(new WeatherState(city));
+class WeatherCubit extends Cubit<WeatherState> {
+
+  final WeatherRepository _weatherRepository;
+
+  // TODO arg par défault ?
+  WeatherCubit(this._weatherRepository) : super(new WeatherState(null, null));
+
+  Future<void> selectCity(String city) async {
+    emit(new WeatherState(city, null));
+    var weather = await this._weatherRepository.getCityWeather();
+    print(weather);
+    emit(new WeatherState(city, weather));
   }
 }
