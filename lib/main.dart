@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:grenoble_hands_on_flutter/WeatherRepository.dart';
+import 'package:grenoble_hands_on_flutter/repositories/CitiesRepository.dart';
+import 'package:grenoble_hands_on_flutter/repositories/WeatherRepository.dart';
 import 'package:grenoble_hands_on_flutter/state/CitiesCubit.dart';
 import 'package:grenoble_hands_on_flutter/state/WeatherCubit.dart';
 
-import 'HomeScreen.dart';
+import 'screen/HomeScreen.dart';
 
-var weatherRepository = new WeatherRepository();
+var citiesRepository = new CitiesRepository();
+var weatherRepository = new WeatherRepository(citiesRepository);
 
 void main() {
   runApp(WeatherApp());
@@ -20,7 +22,7 @@ class WeatherApp extends StatelessWidget {
         BlocProvider(create: (_) {
           return WeatherCubit(weatherRepository);
         }),
-        BlocProvider(create: (_) => CitiesCubit()),
+        BlocProvider(create: (_) => CitiesCubit(citiesRepository)),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

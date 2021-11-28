@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grenoble_hands_on_flutter/state/CitiesCubit.dart';
 
 import 'CityScreen.dart';
-import 'state/WeatherCubit.dart';
+import '../state/WeatherCubit.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
