@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grenoble_hands_on_flutter/repositories/CitiesRepository.dart';
 import 'package:grenoble_hands_on_flutter/repositories/WeatherRepository.dart';
+import 'package:grenoble_hands_on_flutter/screen/ui/Colors.dart';
 import 'package:grenoble_hands_on_flutter/state/CitiesCubit.dart';
 import 'package:grenoble_hands_on_flutter/state/WeatherCubit.dart';
 
@@ -25,9 +26,9 @@ class WeatherApp extends StatelessWidget {
         BlocProvider(create: (_) => CitiesCubit(citiesRepository)),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Zenika Cities weather',
         theme: ThemeData(
-          primarySwatch: Colors.teal,
+          primarySwatch: MAIN_MATERIAL_COLOR,
         ),
         home: HomeScreen(),
       ),

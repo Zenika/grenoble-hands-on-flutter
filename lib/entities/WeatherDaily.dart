@@ -1,12 +1,12 @@
 
-class Weather {
-  const Weather({
+class WeatherDaily {
+  const WeatherDaily({
     required this.dataseries,
   });
 
   final List<DataSeries> dataseries;
 
-  factory Weather.fromJson(Map<String, dynamic> json) => Weather(
+  factory WeatherDaily.fromJson(Map<String, dynamic> json) => WeatherDaily(
       dataseries: (json['dataseries'] as List)
           .map((e) => DataSeries.fromJson(e))
           .toList());
