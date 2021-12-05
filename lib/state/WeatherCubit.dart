@@ -13,7 +13,7 @@ class WeatherCubit extends Cubit<WeatherState> {
   }
 
   Future<void> _fetchWeather(String city, WeatherMode mode) async {
-    emit(new WeatherState(citySelected: city, loading: true));
+    emit(new WeatherState(citySelected: city, mode: mode, loading: true));
     if (mode == WeatherMode.DAILY) {
       var weather = await this._weatherRepository.getCityDailyWeather(city);
       emit(
