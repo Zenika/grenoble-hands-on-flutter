@@ -39,7 +39,7 @@ class TableHourlyWeather extends StatelessWidget {
               ]),
               Column(children: [
                 Image(
-                  image: AssetImage(weather.weather + '.png'),
+                  image: AssetImage("assets/"+weather.weather + '.png'),
                 )
               ]),
               Column(children: [
